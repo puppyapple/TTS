@@ -31,6 +31,19 @@ def get_preprocessor_by_name(name):
     return getattr(thismodule, name.lower())
 
 
+def biaobei(root_path, meta_file):
+    """Normalizes the Biaobei meta data file to TTS format"""
+    txt_file = os.path.join(root_path, meta_file)
+    items = []
+    speaker_name = "biaobei"
+    with open(txt_file, 'r') as ttf:
+        for line in ttf:
+            cols = line.split('|')
+            wav_file = cols[0]
+            text = cols[1]
+            items.append([text, wav_file, speaker_name])
+    return items
+
 def tweb(root_path, meta_file):
     """Normalize TWEB dataset.
     https://www.kaggle.com/bryanpark/the-world-english-bible-speech-dataset

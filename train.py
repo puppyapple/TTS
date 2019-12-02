@@ -5,6 +5,8 @@ import glob
 import time
 import traceback
 
+sys.path.append('../')
+
 import numpy as np
 import torch
 import torch.nn as nn
@@ -255,8 +257,9 @@ def train(model, criterion, criterion_st, optimizer, optimizer_st, scheduler,
 
             # Plot Training Iter Stats
             # reduce TB load
-            if global_step % 10 == 0:
+            if global_step % 3 == 0:
                 iter_stats = {
+                    "stop_loss": stop_loss.item(),
                     "loss_posnet": postnet_loss.item(),
                     "loss_decoder": decoder_loss.item(),
                     "lr": current_lr,
@@ -568,6 +571,8 @@ def main(args):  # pylint: disable=redefined-outer-name
     criterion_st = nn.BCEWithLogitsLoss(
         pos_weight=torch.tensor(10)) if c.stopnet else None
 
+    # added by wuzijun: model.cuda() called first
+    # model.cuda()
     if args.restore_path:
         checkpoint = torch.load(args.restore_path)
         try:
@@ -577,7 +582,12 @@ def main(args):  # pylint: disable=redefined-outer-name
             if c.reinit_layers:
                 raise RuntimeError
             model.load_state_dict(checkpoint['model'])
+            # added by wuzijun: model.cuda() first
+            # model.cuda()
+            # optimizer.load_state_dict(checkpoint['optimizer'])
+            # optimizer.cuda()
         except:
+            print(e)
             print(" > Partial model initialization.")
             model_dict = model.state_dict()
             model_dict = set_init_dict(model_dict, checkpoint, c)

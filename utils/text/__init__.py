@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
-
+import sys
+sys.path.append('../TTS')
 import re
 import phonemizer
 from phonemizer.phonemize import phonemize
@@ -100,6 +101,9 @@ def text_to_sequence(text, cleaner_names):
             _clean_text(m.group(1), cleaner_names))
         sequence += _arpabet_to_sequence(m.group(2))
         text = m.group(3)
+        
+    # Append EOS token, added by wuzijun
+    # sequence.append(_SYMBOL_TO_ID['~'])
     return sequence
 
 

@@ -12,6 +12,8 @@ _bos = '^'
 _characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!\'(),-.:;? '
 _punctuations = '!\'(),-.:;? '
 _phoneme_punctuations = '.!;:,?'
+# add numbers
+_numbers = '1234567890'
 
 # Phonemes definition
 _vowels = 'iyɨʉɯuɪʏʊeøɘəɵɤoɛœɜɞʌɔæɐaɶɑɒᵻ'
@@ -26,7 +28,7 @@ _phonemes = sorted(list(_vowels + _non_pulmonic_consonants + _pulmonic_consonant
 _arpabet = ['@' + s for s in _phonemes]
 
 # Export all symbols:
-symbols = [_pad, _eos, _bos] + list(_characters) + _arpabet
+symbols = [_pad, _eos, _bos] + list(_characters) + list(_numbers) + _arpabet
 phonemes = [_pad, _eos, _bos] + list(_phonemes) + list(_punctuations)
 
 # Generate ALIEN language
