@@ -717,6 +717,7 @@ if __name__ == '__main__':
 
     if args.rank == 0:
         LOG_DIR = OUT_PATH
+        # print("Logger created.")
         tb_logger = Logger(LOG_DIR)
 
     try:

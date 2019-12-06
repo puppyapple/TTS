@@ -1,5 +1,7 @@
 import copy
 import torch
+import sys
+sys.path.append("../TTS")
 from math import sqrt
 from torch import nn
 from TTS.layers.tacotron2 import Encoder, Decoder, Postnet
