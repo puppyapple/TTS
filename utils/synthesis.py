@@ -160,7 +160,7 @@ def synthesis2(model,
     postnet_output, decoder_output, alignment = parse_outputs(
         postnet_output, decoder_output, alignments)
     # plot results
-    # wav = inv_spectrogram(postnet_output, ap, CONFIG)
+    wav_gl = inv_spectrogram(postnet_output, ap, CONFIG)
     # trim silence
 
-    return alignment, decoder_output, postnet_output, stop_tokens
+    return wav_gl, alignment, decoder_output, postnet_output, stop_tokens
