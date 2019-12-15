@@ -127,7 +127,8 @@ def synthesis2(model,
               style_wav=None,
               truncated=False,
               enable_eos_bos_chars=False, #pylint: disable=unused-argument
-              do_trim_silence=False):
+              do_trim_silence=False, 
+              create_gl=False):
     """Synthesize voice for the given text.
 
         Args:
@@ -160,7 +161,7 @@ def synthesis2(model,
     postnet_output, decoder_output, alignment = parse_outputs(
         postnet_output, decoder_output, alignments)
     # plot results
-    wav_gl = inv_spectrogram(postnet_output, ap, CONFIG)
+    wav_gl = inv_spectrogram(postnet_output, ap, CONFIG) if create_gl else None
     # trim silence
 
     return wav_gl, alignment, decoder_output, postnet_output, stop_tokens

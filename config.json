@@ -1,7 +1,7 @@
 {
     "model": "Tacotron2",          
     "run_name": "Biaobei",
-    "run_description": "tacotron2 do trim without eos and no forward attention",
+    "run_description": "tacotron2 do trim without eos and no forward attention + prenet batch norm + prenet dropout disabled",
 
     
     "audio":{
@@ -43,7 +43,7 @@
 
     
     "run_eval": true,
-    "test_delay_epochs": 300,  
+    "test_delay_epochs": 1,  
     "test_sentences_file": "test_sentences.txt",  
 
     
@@ -56,8 +56,8 @@
     
     
     "memory_size": 5,              
-    "prenet_type": "original",     
-    "prenet_dropout": true,        
+    "prenet_type": "bn",     
+    "prenet_dropout": false,        
 
     
     "attention_type": "original",  

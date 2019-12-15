@@ -574,7 +574,7 @@ def main(args):  # pylint: disable=redefined-outer-name
     # added by wuzijun: model.cuda() called first
     # model.cuda()
     if args.restore_path:
-        checkpoint = torch.load(args.restore_path)
+        checkpoint = torch.load(args.restore_path, map_location='cpu')
         try:
             # TODO: fix optimizer init, model.cuda() needs to be called before
             # optimizer restore
@@ -587,7 +587,7 @@ def main(args):  # pylint: disable=redefined-outer-name
             # optimizer.load_state_dict(checkpoint['optimizer'])
             # optimizer.cuda()
         except:
-            print(e)
+            # print(e)
             print(" > Partial model initialization.")
             model_dict = model.state_dict()
             model_dict = set_init_dict(model_dict, checkpoint, c)

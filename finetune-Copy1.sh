@@ -1,0 +1,2 @@
+nohup tensorboard --host=10.141.168.98 --logdir=./output/ &
+CUDA_VISIBLE_DEVICES="3,4,5,6,7" nohup python3.7 distribute.py --config_path config.json --restore_path ./output/Biaobei-November-29-2019_07+21AM-649312f/best_model.pth.tar > my_train.log 2>&1 &

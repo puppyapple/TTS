@@ -1,2 +1,2 @@
 nohup tensorboard --host=10.141.168.98 --logdir=./output/ &
-nohup python3.7 distribute.py --config_path config.json --continue_path ./output/Biaobei-November-28-2019_09+13AM-649312f > my_train.log 2>&1 &
+CUDA_VISIBLE_DEVICES="3,4,5,6,7" nohup python3.7 distribute.py --continue_path ./output/Biaobei-December-11-2019_08+24AM-536ef91/ > my_train.log 2>&1 &
