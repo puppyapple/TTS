@@ -109,7 +109,7 @@
             {
                 "name": "biaobei",
                 
-                "path": "/search/hadoop07/wuzijun/voice_data/Biaobei/",
+                "path": "/Biaobei/",
                 "meta_file_train": "audio_text_train_filelist.txt",
                 "meta_file_val": "audio_text_val_filelist.txt"
             }
